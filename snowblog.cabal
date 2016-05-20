@@ -55,6 +55,7 @@ library
     Import
     Import.NoFoundation
     Model
+    Model.Role
     Settings
     Settings.StaticFiles
   if flag(dev) || flag(library-only)
@@ -64,6 +65,7 @@ library
     ghc-options: -Wall -fwarn-tabs -O2
   default-extensions:
     DeriveDataTypeable
+    DeriveGeneric
     EmptyDataDecls
     FlexibleContexts
     FlexibleInstances

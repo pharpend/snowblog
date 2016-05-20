@@ -5,6 +5,7 @@ User
     emailVerkey Text
     realName Text Maybe
     password Text Maybe
+    role Role
     created UTCTime
     UniqueUser ident
 

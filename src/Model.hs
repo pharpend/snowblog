@@ -2,6 +2,8 @@
 
 module Model where
 
+import Model.Role
+
 import ClassyPrelude.Yesod
 import Database.Persist.Quasi
 import Text.Markdown
