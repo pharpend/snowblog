@@ -119,6 +119,7 @@ library
     , yaml
     , yesod
     , yesod-auth
+    , yesod-auth-hashdb
     , yesod-core
     , yesod-form
     , yesod-static

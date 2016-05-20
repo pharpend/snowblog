@@ -4,10 +4,11 @@ module Model where
 
 import Model.Role
 
-import Control.Lens.TH
+import Control.Lens
 import ClassyPrelude.Yesod
 import Database.Persist.Quasi
 import Text.Markdown
+import Yesod.Auth.HashDB (HashDBUser(..))
 import Yesod.Text.Markdown ()
 
 -- You can define all of your database entities in the entities file.
@@ -22,3 +23,7 @@ makeLensesWith camelCaseFields ''Notification
 makeLensesWith camelCaseFields ''Post
 makeLensesWith camelCaseFields ''StaticPage
 makeLensesWith camelCaseFields ''User
+
+instance HashDBUser User where
+  userPasswordHash = userPassword
+  setPasswordHash h u = u { userPassword = Just h }
