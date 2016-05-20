@@ -1,17 +1,39 @@
 User
     ident Text
-    password Text Maybe
+    email Text Maybe
+    emailVerified Bool
+    emailVerkey Text
+    realName Text Maybe
+    passphrase Text Maybe
+    created UTCTime
     UniqueUser ident
-    deriving Typeable
-Email
-    email Text
-    userId UserId Maybe
-    verkey Text Maybe
-    UniqueEmail email
-Comment json -- Adding "json" causes ToJSON and FromJSON instances to be derived.
-    message Text
-    userId UserId Maybe
-    deriving Eq
-    deriving Show
 
- -- By default this file is used in Model.hs (which is imported by Foundation.hs)
+Page json
+    slug Text
+    title Text
+    authors [UserId]
+    text Markdown
+    created UTCTime
+    comments [CommentId]
+    UniquePage slug
+
+Post json
+    slug Text
+    title Text
+    authors [UserId]
+    text Markdown
+    created UTCTime
+    comments [CommentId]
+    UniquePost slug
+
+Comment json
+    author UserId
+    text Markdown
+    created UTCTime
+    comments [CommentId]
+
+Notification json
+    target UserId
+    text Text
+    read Bool
+    created UTCTime

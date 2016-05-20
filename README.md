@@ -33,3 +33,70 @@ The maintainer is Peter Harpending.
 
 * Email: `peter@harpending.org`
 * IRC: `pharpend` on FreeNode.net
+
+## Specification
+
+*   Routes:
+
+    + `HomeR GET` lists all the posts
+
+    + `PostR GET` views a particular post, plus its comments
+    + `NewPostR GET POST` makes a new post
+    + `PostEditR GET POST` edits an existing post
+    + `PostDelR GET POST` blanks a post, leaves plus its comments
+
+    + `NewCommentR POST` adds a new comment to a post
+    + `CommentR GET` views a comment tree.
+    + `CommentEditR POST` edits a comment
+    + `CommentDelR POST` blanks a comment
+
+    + `NewUserR GET POST` Creates a new user
+    + `UserR GET` views a user's page
+    + `UserDelR GET POST` deletes a user, and blanks its comments
+    + `UserEditR GET POST` edits a user's info
+
+    + `NotificationsR GET` views a user's notifications
+
+*   Models
+
+```
+User
+    ident Text
+    email Text Maybe
+    emailVerified Bool
+    emailVerkey Text
+    realName Text Maybe
+    passphrase Text Maybe
+    created UTCTime
+    UniqueUser ident
+
+Page
+    slug Text
+    title Text
+    authors [UserId]
+    text Markdown
+    created UTCTime
+    comments [CommentId]
+    UniquePage slug
+
+Post
+    slug Text
+    title Text
+    authors [UserId]
+    text Markdown
+    created UTCTime
+    comments [CommentId]
+    UniquePost slug
+
+Comment
+    author UserId
+    text Markdown
+    created UTCTime
+    comments [CommentId]
+
+Notification
+    user UserId
+    text Text
+    read Bool
+    created UTCTime
+```
