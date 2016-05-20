@@ -3,7 +3,7 @@
 Blog engine for [Snowdrift](https:///snowdrift.coop). This software is
 written in [Haskell](https://www.haskell.org/), and licensed under the
 [GNU AGPL](https://www.gnu.org/licenses/agpl-3.0.txt), a copy of which
-can be found in the [LICENSE](LICENSE) file.
+can be found in the <LICENSE> file.
 
 ## Building this on your own machine
 
@@ -36,67 +36,90 @@ The maintainer is Peter Harpending.
 
 ## Specification
 
-*   Routes:
+*   Routes. Here are the non-degenenerate routes (i.e. not `/favicon.ico`
+    et al)
 
-    + `HomeR GET` lists all the posts
+        / HomeR GET
+        /notifications NotificationsR GET
 
-    + `PostR GET` views a particular post, plus its comments
-    + `NewPostR GET POST` makes a new post
-    + `PostEditR GET POST` edits an existing post
-    + `PostDelR GET POST` blanks a post, leaves plus its comments
+        /new/comment NewCommentR  GET POST
+        /new/page    NewStaticPageR  GET POST
+        /new/post    NewPostR  GET POST
+        /new/user    NewUserR  GET POST
 
-    + `NewCommentR POST` adds a new comment to a post
-    + `CommentR GET` views a comment tree.
-    + `CommentEditR POST` edits a comment
-    + `CommentDelR POST` blanks a comment
+        /comment/#CommentId      CommentR     GET
+        /comment/#CommentId/del  CommentDelR  GET POST
+        /comment/#CommentId/edit CommentEditR GET POST
 
-    + `NewUserR GET POST` Creates a new user
-    + `UserR GET` views a user's page
-    + `UserDelR GET POST` deletes a user, and blanks its comments
-    + `UserEditR GET POST` edits a user's info
+        /page/#Text      StaticPageR     GET
+        /page/#Text/del  StaticPageDelR  GET POST
+        /page/#Text/edit StaticPageEditR GET POST
 
-    + `NotificationsR GET` views a user's notifications
+        /post/#Text      PostR     GET
+        /post/#Text/del  PostDelR  GET POST
+        /post/#Text/edit PostEditR GET POST
+
+        /user/#Text	 UserR     GET
+        /user/#Text/del  UserDelR  GET POST
+        /user/#Text/edit UserEditR GET POST
+
 
 *   Models
 
-```
-User
-    ident Text
-    email Text Maybe
-    emailVerified Bool
-    emailVerkey Text
-    realName Text Maybe
-    passphrase Text Maybe
-    created UTCTime
-    UniqueUser ident
+        Comment json
+            author UserId
+            text Markdown
+            created UTCTime
+            comments [CommentId]
 
-Page
-    slug Text
-    title Text
-    authors [UserId]
-    text Markdown
-    created UTCTime
-    comments [CommentId]
-    UniquePage slug
+        Notification json
+            target UserId
+            text Text
+            read Bool
+            created UTCTime
 
-Post
-    slug Text
-    title Text
-    authors [UserId]
-    text Markdown
-    created UTCTime
-    comments [CommentId]
-    UniquePost slug
+        Post json
+            slug Text
+            title Text
+            authors [UserId]
+            text Markdown
+            created UTCTime
+            comments [CommentId]
+            UniquePost slug
 
-Comment
-    author UserId
-    text Markdown
-    created UTCTime
-    comments [CommentId]
+        StaticPage json
+            slug Text
+            title Text
+            authors [UserId]
+            text Markdown
+            created UTCTime
+            comments [CommentId]
+            UniquePage slug
 
-Notification
-    user UserId
-    text Text
-    read Bool
-    created UTCTime
-```
+        User
+            ident Text
+            email Text Maybe
+            emailVerified Bool
+            emailVerkey Text
+            realName Text Maybe
+            password Text Maybe
+            role Role
+            created UTCTime
+            UniqueUser ident
+
+    A note on `Role`. It's defined in <src/Model/Role.hs>,
+    
+    ```haskell
+    data Role = Admin
+              | Moderator
+              | Contributor
+              | Established
+    ```
+    
+    It's an instance of `PersistField` and `PersistFieldSql`, so it can
+    be a field in the database. Each role is a superset of the next
+    role. That is,
+    
+    + All `Admin`s are `Moderator`s
+    + All `Moderator`s are `Contributor`s
+    + All `Contributor`s are `Established`
