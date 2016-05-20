@@ -4,6 +4,7 @@ module Model where
 
 import Model.Role
 
+import Control.Lens.TH
 import ClassyPrelude.Yesod
 import Database.Persist.Quasi
 import Text.Markdown
@@ -15,3 +16,9 @@ import Yesod.Text.Markdown ()
 -- http://www.yesodweb.com/book/persistent/
 share [mkPersist sqlSettings, mkMigrate "migrateAll"]
     $(persistFileWith lowerCaseSettings "config/models")
+
+makeLensesWith camelCaseFields ''Comment
+makeLensesWith camelCaseFields ''Notification
+makeLensesWith camelCaseFields ''Post
+makeLensesWith camelCaseFields ''StaticPage
+makeLensesWith camelCaseFields ''User

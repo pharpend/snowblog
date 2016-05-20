@@ -69,6 +69,7 @@ library
     EmptyDataDecls
     FlexibleContexts
     FlexibleInstances
+    FunctionalDependencies
     GADTs
     GeneralizedNewtypeDeriving
     MultiParamTypeClasses
@@ -97,6 +98,7 @@ library
     , file-embed
     , hjsmin
     , http-conduit
+    , lens
     , markdown
     , monad-control
     , monad-logger

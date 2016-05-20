@@ -1,32 +1,3 @@
-User
-    ident Text
-    email Text Maybe
-    emailVerified Bool
-    emailVerkey Text
-    realName Text Maybe
-    password Text Maybe
-    role Role
-    created UTCTime
-    UniqueUser ident
-
-StaticPage json
-    slug Text
-    title Text
-    authors [UserId]
-    text Markdown
-    created UTCTime
-    comments [CommentId]
-    UniquePage slug
-
-Post json
-    slug Text
-    title Text
-    authors [UserId]
-    text Markdown
-    created UTCTime
-    comments [CommentId]
-    UniquePost slug
-
 Comment json
     author UserId
     text Markdown
@@ -38,3 +9,32 @@ Notification json
     text Text
     read Bool
     created UTCTime
+
+Post json
+    slug Text
+    title Text
+    authors [UserId]
+    text Markdown
+    created UTCTime
+    comments [CommentId]
+    UniquePost slug
+
+StaticPage json
+    slug Text
+    title Text
+    authors [UserId]
+    text Markdown
+    created UTCTime
+    comments [CommentId]
+    UniquePage slug
+
+User
+    ident Text
+    email Text Maybe
+    emailVerified Bool
+    emailVerkey Text
+    realName Text Maybe
+    password Text Maybe
+    role Role
+    created UTCTime
+    UniqueUser ident
