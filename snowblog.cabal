@@ -33,8 +33,24 @@ library
   exposed-modules:
     Application
     Foundation
+    Handler.Comment
+    Handler.Comment.Del
+    Handler.Comment.Edit
     Handler.Common
     Handler.Home
+    Handler.New.Comment
+    Handler.New.Post
+    Handler.New.StaticPage
+    Handler.New.User
+    Handler.Post
+    Handler.Post.Del
+    Handler.Post.Edit
+    Handler.StaticPage
+    Handler.StaticPage.Del
+    Handler.StaticPage.Edit
+    Handler.User
+    Handler.User.Del
+    Handler.User.Edit
     Import
     Import.NoFoundation
     Model
@@ -45,7 +61,7 @@ library
     ghc-options: -Wall -fwarn-tabs -O0
   else
     ghc-options: -Wall -fwarn-tabs -O2
-  extensions:
+  default-extensions:
     DeriveDataTypeable
     EmptyDataDecls
     FlexibleContexts
@@ -118,41 +134,41 @@ test-suite test
   ghc-options:      -Wall
   main-is:          Spec.hs
   default-language: Haskell2010
-  other-modules:     
+  other-modules:
     Handler.CommentSpec
-    Handler.CommonSpec                  
-    Handler.HomeSpec                    
-    TestImport                          
-  extensions: 
-    CPP                                 
-    DeriveDataTypeable                  
-    EmptyDataDecls                      
-    FlexibleContexts                    
-    FlexibleInstances                   
-    GADTs                               
-    GeneralizedNewtypeDeriving          
-    MultiParamTypeClasses               
-    NoImplicitPrelude                   
-    NoMonomorphismRestriction           
-    OverloadedStrings                   
-    QuasiQuotes                         
+    Handler.CommonSpec
+    Handler.HomeSpec
+    TestImport
+  default-extensions:
+    CPP
+    DeriveDataTypeable
+    EmptyDataDecls
+    FlexibleContexts
+    FlexibleInstances
+    GADTs
+    GeneralizedNewtypeDeriving
+    MultiParamTypeClasses
+    NoImplicitPrelude
+    NoMonomorphismRestriction
+    OverloadedStrings
+    QuasiQuotes
     TemplateHaskell
-    TupleSections                       
-    TypeFamilies                        
-    ViewPatterns                        
-  build-depends: 
+    TupleSections
+    TypeFamilies
+    ViewPatterns
+  build-depends:
       base
-    , aeson                                      
-    , classy-prelude                             
-    , classy-prelude-yesod                       
+    , aeson
+    , classy-prelude
+    , classy-prelude-yesod
     , hspec
-    , monad-logger                               
-    , persistent                                 
-    , persistent-postgresql                      
-    , resourcet                                  
-    , shakespeare                                
-    , snowblog                                   
-    , transformers                               
-    , yesod                                      
-    , yesod-core                                 
+    , monad-logger
+    , persistent
+    , persistent-postgresql
+    , resourcet
+    , shakespeare
+    , snowblog
+    , transformers
+    , yesod
+    , yesod-core
     , yesod-test

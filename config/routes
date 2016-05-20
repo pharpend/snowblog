@@ -5,22 +5,23 @@
 
 / HomeR GET
 
-/new-page	 NewPageR GET POST
-/page/#Text      PageR GET
-/page/#Text/edit PageEditR GET POST
-/page/#Text/del  PageDelR GET POST
+/new/comment NewCommentR  GET POST
+/new/page    NewStaticPageR  GET POST
+/new/post    NewPostR  GET POST
+/new/user    NewUserR  GET POST
 
-/new-post        NewPostR GET POST
-/post/#Text      PostR GET
-/post/#Text/edit PostEditR GET POST
-/post/#Text/del  PostDelR GET POST
-
-/new-comment             CommentNewR POST
-/comment/#CommentId      CommentR GET
+/comment/#CommentId      CommentR     GET
+/comment/#CommentId/del  CommentDelR  GET POST
 /comment/#CommentId/edit CommentEditR GET POST
-/comment/#CommentId/del  CommentDelR GET POST
 
-/new-user        NewUserR GET POST
-/user/#Text	 UserR GET
-/user/#Text/edit UserEditR GET POST
+/page/#Text      StaticPageR     GET
+/page/#Text/del  StaticPageDelR  GET POST
+/page/#Text/edit StaticPageEditR GET POST
+
+/post/#Text      PostR     GET
+/post/#Text/del  PostDelR  GET POST
+/post/#Text/edit PostEditR GET POST
+
+/user/#Text	 UserR     GET
 /user/#Text/del  UserDelR  GET POST
+/user/#Text/edit UserEditR GET POST
