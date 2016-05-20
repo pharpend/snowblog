@@ -4,11 +4,11 @@ User
     emailVerified Bool
     emailVerkey Text
     realName Text Maybe
-    passphrase Text Maybe
+    password Text Maybe
     created UTCTime
     UniqueUser ident
 
-Page json
+StaticPage json
     slug Text
     title Text
     authors [UserId]

@@ -78,6 +78,7 @@ library
     , file-embed
     , hjsmin
     , http-conduit
+    , markdown
     , monad-control
     , monad-logger
     , persistent
@@ -100,6 +101,7 @@ library
     , yesod-core
     , yesod-form
     , yesod-static
+    , yesod-text-markdown
 
 executable snowblog
   if flag(library-only)
