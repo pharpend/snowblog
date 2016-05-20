@@ -11,11 +11,11 @@ First, install [stack](http://docs.haskellstack.org/en/stable/README/)
 and
 [PostgreSQL](https://wiki.postgresql.org/wiki/Detailed_installation_guides).
 
-    git clone https://git.snowdrift.coop/pharpend/snowblog.git
-    cd snowblog
-    stack setup
-    stack build
-    ./sdb.hs devel
+    $ git clone https://git.snowdrift.coop/pharpend/snowblog.git
+    $ cd snowblog
+    $ stack setup
+    $ stack build
+    $ ./sdb.hs devel
 
 Then, visit <http://localhost:3000> on your machine.
 
