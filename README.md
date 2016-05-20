@@ -59,7 +59,7 @@ The maintainer is Peter Harpending.
         /post/#Text/del  PostDelR  GET POST
         /post/#Text/edit PostEditR GET POST
 
-        /user/#Text	 UserR     GET
+        /user/#Text      UserR     GET
         /user/#Text/del  UserDelR  GET POST
         /user/#Text/edit UserEditR GET POST
 
