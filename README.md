@@ -3,7 +3,7 @@
 Blog engine for [Snowdrift](https:///snowdrift.coop). This software is
 written in [Haskell](https://www.haskell.org/), and licensed under the
 [GNU AGPL](https://www.gnu.org/licenses/agpl-3.0.txt), a copy of which
-can be found in the <LICENSE> file.
+can be found in the [LICENSE](LICENSE) file.
 
 ## Building this on your own machine
 
@@ -107,7 +107,8 @@ The maintainer is Peter Harpending.
             created UTCTime
             UniqueUser ident
 
-    A note on `Role`. It's defined in <src/Model/Role.hs>,
+    A note on `Role`. It's defined in
+    [`src/Model/Role.hs`](src/Model/Role.hs) as
     
     ```haskell
     data Role = Admin
