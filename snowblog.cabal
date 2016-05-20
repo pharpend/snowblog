@@ -42,6 +42,7 @@ library
     Handler.New.Post
     Handler.New.StaticPage
     Handler.New.User
+    Handler.Notifications
     Handler.Post
     Handler.Post.Del
     Handler.Post.Edit

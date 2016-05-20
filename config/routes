@@ -4,6 +4,7 @@
 /robots.txt RobotsR GET
 
 / HomeR GET
+/notifications NotificationsR GET
 
 /new/comment NewCommentR  GET POST
 /new/page    NewStaticPageR  GET POST

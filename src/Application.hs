@@ -41,6 +41,7 @@ import Handler.New.Comment
 import Handler.New.Post
 import Handler.New.StaticPage
 import Handler.New.User
+import Handler.Notifications
 import Handler.Post
 import Handler.Post.Del
 import Handler.Post.Edit
