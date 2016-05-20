@@ -136,13 +136,29 @@ executable snowblog
 test-suite test
   type:             exitcode-stdio-1.0
   hs-source-dirs:   test
-  ghc-options:      -Wall
+  ghc-options:      -Wall -threaded -rtsopts -with-rtsopts=-N
   main-is:          Spec.hs
   default-language: Haskell2010
   other-modules:
     Handler.CommentSpec
+    Handler.Comment.DelSpec
+    Handler.Comment.EditSpec
     Handler.CommonSpec
     Handler.HomeSpec
+    Handler.NotificationsSpec
+    Handler.New.CommentSpec
+    Handler.New.PostSpec
+    Handler.New.StaticPageSpec
+    Handler.New.UserSpec
+    Handler.PostSpec
+    Handler.Post.DelSpec
+    Handler.Post.EditSpec
+    Handler.StaticPageSpec
+    Handler.StaticPage.DelSpec
+    Handler.StaticPage.EditSpec
+    Handler.UserSpec
+    Handler.User.DelSpec
+    Handler.User.EditSpec
     TestImport
   default-extensions:
     CPP

@@ -1,4 +1,4 @@
-module Handler.CommentSpec where
+module Handler.New.CommentSpec where
 
 import TestImport
 
@@ -7,5 +7,5 @@ spec =
   withApp $ do
     describe "valid request" $ do
       it "gives a 200" $ do
-        get (CommentR (toSqlKey 1))
+        get NewCommentR
         statusIs 200
